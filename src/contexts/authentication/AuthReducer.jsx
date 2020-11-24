@@ -10,25 +10,34 @@ import {
 export default (state, action) => {
     switch(action.type){
         case REGISTER_SUCCESS:
-            localStorage.setItem('token', action.payload.token)
+        case LOGIN_SUCCESS:
+            localStorage.setItem('token', action.payload.token);
             return {
                 ...state,
                 authenticated: true,
-                message: null
+                message: null,
+                loading: false
             }
+        case LOG_OUT:
         case LOGIN_ERROR:
         case REGISTER_ERROR:
-            localStorage.removeItem('token')
+            localStorage.removeItem('token');
             return {
                 ...state,
                 token: null,
-                message: action.payload
+                data_user: null,
+                authenticated: false,
+                message: action.payload,
+                loading: false
             }
         case GET_USER:
             return {
                 ...state,
+                authenticated: true,
+                loading: false,
                 data_user: action.payload
             }
+        
         default:
             return state;
     }

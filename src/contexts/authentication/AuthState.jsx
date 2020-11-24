@@ -20,7 +20,8 @@ const AuthState = props => {
         token: localStorage.getItem('token'),
         authenticated: false,
         data_user: null,
-        message: null
+        message: null,
+        loading: true
     }
 
     const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -39,7 +40,6 @@ const AuthState = props => {
             userAuthenticate();
 
         } catch (error) {
-            console.log(error.response.data.msg);
             
             const alert = {
                 msg: error.response.data.msg,
@@ -75,6 +75,37 @@ const AuthState = props => {
         }
     }
 
+    //Inicio de Sesion
+    const loginUser = async data => {
+        try {
+            const response = await axiosClient.post('/api/auth', data);
+            dispatch({
+                type: LOGIN_SUCCESS,
+                payload: response.data
+            });
+            userAuthenticate();
+
+        } catch (error) {
+            console.log(error.response.data.msg);
+
+            const alert = {
+                msg: error.response.data.msg,
+                category: 'alerta-error'
+            };
+
+            dispatch({
+                type: LOGIN_ERROR,
+                payload: alert
+            });
+        }
+    }
+
+    const logoutUser = () => {
+        dispatch({
+            type: LOG_OUT
+        });
+    }
+
     return (
         <AuthContext.Provider
             value={{
@@ -82,7 +113,11 @@ const AuthState = props => {
                 authenticated: state.authenticated,
                 data_user: state.data_user,
                 message: state.message,
-                userRegister
+                loading: state.loading,
+                userRegister, 
+                loginUser,
+                userAuthenticate,
+                logoutUser
             }}
         >
             {props.children}

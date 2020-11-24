@@ -21,7 +21,7 @@ const NewAccount = (props) => {
         if(message){
             viewAlert(message.msg, message.category);
         }
-    }, [message, authenticated, props.history])
+    }, [message, authenticated, props.history]);
 
     //Staste para Crear Cuenta
     const [dataNewAccount, saveDataNewAccount] = useState({

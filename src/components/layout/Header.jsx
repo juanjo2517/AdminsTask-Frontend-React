@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import AuthContext from '../../contexts/authentication/AuthContext';
 
 const Header = () => {
+
+    const authContext = useContext(AuthContext);
+    const { loading, data_user, userAuthenticate, logoutUser } = authContext;
+
+    useEffect(() => {
+        userAuthenticate();
+    }, []);
+
     return ( 
         <div className="app-header">
-            <p className="nombre-usuario">Hola <span>Juan Jose</span></p>
+            { data_user && !loading
+            ? <p className="nombre-usuario">Hola <span>{data_user.name}</span></p>
+            : null }
+            
             <nav className="nav-principal">
-                <a href="#!">Cerrar Sesion</a>
+                <button
+                    className="btn btn-block cerrar-sesion"
+                    onClick={() => logoutUser()}
+                >Cerrar Sesion</button>
             </nav>
         </div>
      );
