@@ -1,20 +1,28 @@
 import React, { useContext } from 'react'
 import TaskContext from '../../contexts/tasks/TaskContext';
-import { DELETE_TASK } from '../../types';
+import ProjectContext from '../../contexts/projects/ProjectContext';
+
 
 const Task = ({task}) => {
 
     const taskContext = useContext(TaskContext);
-    const { deleteTask, updateStateTask, getActualTask } = taskContext; 
+    const { deleteTask, updateTask, getActualTask } = taskContext; 
+
+    const projectConext = useContext(ProjectContext);
+    const { project } = projectConext;
 
     const updateStateTaskBtn = task => {
-        if(task.state){
-            task.state = false;
+        
+        if(task.status){
+            task.status = false;
+            
+            
         }else{
-            task.state = true;
+            task.status = true;
+            
         }
 
-        updateStateTask(task);
+        updateTask(task);
     }
 
 
@@ -22,7 +30,7 @@ const Task = ({task}) => {
         <li className="tarea sombra">
             <p>{task.name}</p>
             <div className="estado">
-                {task.state 
+                {task.status 
                 ?(
                     <button
                         type="button"
@@ -50,7 +58,7 @@ const Task = ({task}) => {
                 <button
                     type="button"
                     className="btn btn-secundario"
-                    onClick={() => deleteTask(task.id)}
+                    onClick={() => deleteTask(task._id, project[0]._id)}
                 >Eliminar</button>
 
             </div>

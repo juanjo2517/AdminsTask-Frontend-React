@@ -18,7 +18,6 @@ const ListProjects = () => {
         //Si hay un error
         if(message){
             viewAlert(message.msg, message.category);
-            console.log('ERROOOOOR');
             
         }
         getProjects();

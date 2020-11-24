@@ -29,7 +29,7 @@ const FormTask = () => {
             saveTasks({
                 name: '',
                 state: false,
-                projectId: 0
+                project: 0
             });
         }
     }, [taskSelected]);
@@ -39,7 +39,7 @@ const FormTask = () => {
     const [taskProject, saveTasks] = useState({
         name: '',
         state: false,
-        projectId: 0
+        project: 0
     }); 
 
     const { name } = taskProject;
@@ -54,7 +54,7 @@ const FormTask = () => {
             ...taskProject,
             [e.target.name]: e.target.value,
             state: false,
-            projectId: actualProject.id
+            project: actualProject._id
         });
     }
 
@@ -86,7 +86,7 @@ const FormTask = () => {
 
         saveTasks({
             name: '',
-            projectId: 0
+            project: 0
         });
     }
 
