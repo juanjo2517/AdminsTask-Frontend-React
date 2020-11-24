@@ -5,6 +5,8 @@ export const VALIDATE_FORM = 'VALIDATE_FORM';
 export const REMOVE_ERROR = 'REMOVE_ERROR';
 export const ACTUAL_PROJECT = 'ACTUAL_PROJECT';
 export const DELETE_PROJECT = 'DELETE_PROJECT';
+export const PROJECT_ERROR = 'PROJECT_ERROR';
+
 
 export const TASK_PROJECT = 'TASK_PROJECT';
 export const ADD_TASK_PROJECT = 'ADD_TASK_PROJECT';

@@ -11,7 +11,7 @@ const FormNewProject = () => {
         viewFormNewProject, 
         addProject, 
         viewError,
-        removeError 
+        removeError
     } = projectsContext;
     
     //State para proyecto
@@ -47,7 +47,10 @@ const FormNewProject = () => {
         //Reiniciar el Form
         saveProject({
             name:' '
-        })
+        });
+        
+        
+
     }
 
     return ( 

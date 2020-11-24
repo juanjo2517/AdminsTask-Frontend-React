@@ -19,20 +19,7 @@ const TaskState = props => {
 
 
     const initialState = {
-        tasks : [
-            {id: 1,name: 'Crear paginas de Login y registro', state: true, projectId:3},
-            {id: 2,name: 'Elegir Hosting y Dominio', state: false, projectId:1},
-            {id: 3,name: 'Usar el empaquetado de Docker', state: true, projectId:3},
-            {id: 4,name: 'Usar CMS Shopify', state: true, projectId:1},
-            {id: 5,name: 'Crear API sencilla', state: true, projectId:2},
-            {id: 6,name: 'Crear los modelos y controladores', state: false, projectId:2},
-            {id: 7,name: 'Revisar rutas', state: true, projectId:2},
-            {id: 8,name: 'Revisar fallo en la base de datos', state: false, projectId:3},
-            {id: 9,name: 'Crear las vistas para home ', state: true, projectId:2},
-            {id: 10,name: 'Crear API para registro de usuarios', state: false, projectId:3},
-            {id: 11,name: 'Realizar el diseño de las alertas', state: true, projectId:4},
-            {id: 12,name: 'Realziar el Header y Footer', state: true, projectId:4}
-        ],
+        tasks : [],
         taskProject: null,
         errorForm: false,
         taskSelected: null
